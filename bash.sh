@@ -27,4 +27,6 @@ caprover serversetup
 
 # install tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
-tailscale up --ssh
+sudo tailscale up --ssh --advertise-exit-node --hostname=<name>
+
+
