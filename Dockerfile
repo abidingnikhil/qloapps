@@ -32,7 +32,15 @@ RUN sed -i 's/memory_limit = .*/memory_limit = 256M/' /etc/php/7.4/apache2/php.i
 RUN rm -f /var/www/html/index.html
 
 # Download and set up QloApps
-RUN wget https://github.com/Qloapps/QloApps/archive/refs/heads/develop.zip -O /tmp/qloapp.zip && \
+#RUN wget https://github.com/Qloapps/QloApps/archive/refs/heads/develop.zip -O /tmp/qloapp.zip && \
+#    unzip /tmp/qloapp.zip -d /var/www/html/ && \
+#    mv /var/www/html/QloApps-develop/* /var/www/html/ && \
+#    mv /var/www/html/QloApps-develop/.* /var/www/html/ 2>/dev/null || true && \
+#    rmdir /var/www/html/QloApps-develop && \
+#    chown -R www-data:www-data /var/www/html && \
+#    chmod -R 755 /var/www/html && \
+#    rm /tmp/qloapp.zip
+RUN wget https://github.com/Qloapps/QloApps/archive/refs/heads/v1.6.x.zip -O /tmp/qloapp.zip && \
     unzip /tmp/qloapp.zip -d /var/www/html/ && \
     mv /var/www/html/QloApps-develop/* /var/www/html/ && \
     mv /var/www/html/QloApps-develop/.* /var/www/html/ 2>/dev/null || true && \
