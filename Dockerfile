@@ -42,12 +42,14 @@ RUN rm -f /var/www/html/index.html
 #    rm /tmp/qloapp.zip
 RUN wget https://github.com/Qloapps/QloApps/archive/refs/heads/v1.6.x.zip -O /tmp/qloapp.zip && \
     unzip /tmp/qloapp.zip -d /var/www/html/ && \
-    mv /var/www/html/QloApps-develop/* /var/www/html/ && \
-    mv /var/www/html/QloApps-develop/.* /var/www/html/ 2>/dev/null || true && \
-    rmdir /var/www/html/QloApps-develop && \
+    mv /var/www/html/QloApps-1.6.x/* /var/www/html/ && \
+    mv /var/www/html/QloApps-1.6.x/.* /var/www/html/ 2>/dev/null || true && \
+    rmdir /var/www/html/QloApps-1.6.x && \
     chown -R www-data:www-data /var/www/html && \
-    chmod -R 755 /var/www/html && \
+    find /var/www/html -type d -exec chmod 755 {} \; && \
+    find /var/www/html -type f -exec chmod 644 {} \; && \
     rm /tmp/qloapp.zip
+
 
 # Apache configuration
 RUN echo '<VirtualHost *:80>\n\
